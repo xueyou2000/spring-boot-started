@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="zh-hans" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+</head>
+<body>
+    <h1>找不到页面</h1>
+    <!--/*@thymesVar id="error" type="com.xueyou.model.vo.JsonResult"*/-->
+    <p th:text="'错误类型：' + ${error.getCode()}" />
+</body>
+</html>
