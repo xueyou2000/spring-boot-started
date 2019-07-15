@@ -11,34 +11,34 @@ public interface BookService {
 
     /**
      * 查询所有书记
-     * @return
+     * @return 返回所有书籍
      */
-    List<Book> findAll();
+    List findAll();
 
     /**
      * 添加书籍
-     * @param book
+     * @param book 要添加的书籍
      * @return 返回刚添加的书
      */
-    Book insertByBook(Book book);
+    int insertByBook(Book book);
 
     /**
      * 更新书籍信息
-     * @param book
-     * @return
+     * @param book 要更新的书籍
+     * @return 返回书籍
      */
     Book update(Book book);
 
     /**
      * 根据id删除书籍
-     * @param id
+     * @param id 要删除的书籍id
      */
     void delete(Long id);
 
     /**
      * 根据id查找书籍
-     * @param id
-     * @return
+     * @param id 要查询的书籍id
+     * @return 返回书籍
      */
     Book findById(Long id);
 }

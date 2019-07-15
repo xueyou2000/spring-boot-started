@@ -3,14 +3,11 @@ package com.xueyou.config;
 import com.xueyou.model.enums.ResultCode;
 import com.xueyou.model.vo.JsonResult;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
-import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -29,7 +26,7 @@ import java.util.Objects;
  * 定义全局异常捕获
  */
 @Controller
-@RequestMapping({"${server.error.path:${error.path:/error}}"})
+@RequestMapping({"/error"})
 @Slf4j
 public class ExceptionController extends AbstractErrorController {
 
@@ -47,15 +44,15 @@ public class ExceptionController extends AbstractErrorController {
 
     /**
      * 页面异常
-     * @param request
-     * @param response
-     * @return
+     * @param request 请求
+     * @param response 响应
+     * @return 返回模型视图
      */
     @RequestMapping(produces = "text/html")
     public ModelAndView errorHtml(HttpServletRequest request, HttpServletResponse response) {
         HttpStatus status = getStatus(request);
         log.error("接口请求错误，url: {} status：{}", request.getRequestURI(), status);
-        Map<String, Object> model = getErrorAttributes(request, isIncludeStackTrace(request, MediaType.TEXT_HTML));
+        Map<String, Object> model = getErrorAttributes(request, isIncludeStackTrace(request));
         JsonResult<Object> result = new JsonResult<>(ResultCode.NOT_FOUND);
         model.put("error", result);
         response.setStatus(status.value());
@@ -65,8 +62,8 @@ public class ExceptionController extends AbstractErrorController {
 
     /**
      * 接口异常
-     * @param request
-     * @return
+     * @param request 请求
+     * @return 返回 JsonResult 通用格式的错误
      */
     @RequestMapping
     @ResponseBody
@@ -92,16 +89,21 @@ public class ExceptionController extends AbstractErrorController {
         return this.errorProperties.getPath();
     }
 
-    protected boolean isIncludeStackTrace(HttpServletRequest request, MediaType produces) {
+    /**
+     * 是否包含错误堆栈信息
+     * @param request 请求
+     * @return true=包含, false=不包含
+     */
+    private boolean isIncludeStackTrace(HttpServletRequest request) {
         ErrorProperties.IncludeStacktrace include = this.getErrorProperties().getIncludeStacktrace();
         if (include == ErrorProperties.IncludeStacktrace.ALWAYS) {
             return true;
         } else {
-            return include == ErrorProperties.IncludeStacktrace.ON_TRACE_PARAM ? this.getTraceParameter(request) : false;
+            return include == ErrorProperties.IncludeStacktrace.ON_TRACE_PARAM && this.getTraceParameter(request);
         }
     }
 
-    protected ErrorProperties getErrorProperties() {
+    private ErrorProperties getErrorProperties() {
         return this.errorProperties;
     }
 

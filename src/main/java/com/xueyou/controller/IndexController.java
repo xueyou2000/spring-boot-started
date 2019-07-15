@@ -1,9 +1,7 @@
 package com.xueyou.controller;
 
 import com.xueyou.model.pojo.User;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -65,7 +63,7 @@ public class IndexController {
     /**
      * 测试新增用户转换 时间字符串 为 Date
      * { "name": "XueYou", "date": "2019-5-6" }
-     * @param user
+     * @param user 用户信息
      */
     @PostMapping("/add")
     public void addUser(@RequestBody User user) {
@@ -81,8 +79,8 @@ public class IndexController {
 
     /**
      * 测试控制器异常拦截
-     * @return
-     * @throws Exception
+     * @return 返回用户
+     * @throws Exception 测试异常
      */
     @GetMapping("/exception")
     public User exception() throws Exception {
@@ -91,8 +89,8 @@ public class IndexController {
 
     /**
      * 测试自定义转换器
-     * @param name
-     * @return
+     * @param name 名称
+     * @return 返回转换后
      */
     @RequestMapping(value = "/convert", method = RequestMethod.POST)
     public String convert(@RequestBody String name) {
