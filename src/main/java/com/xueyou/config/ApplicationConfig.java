@@ -28,15 +28,14 @@ public class ApplicationConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setGenerateDdl(false);
+        vendorAdapter.setGenerateDdl(true);
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setPackagesToScan("com.xueyou");
         factory.setDataSource(dataSource);
-//        Properties properties = new Properties();
-//        properties.setProperty("show_sql", "true");
-//        properties.setProperty("format_sql", "true");
-//        factory.setJpaProperties(properties);
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.format_sql", "true");
+        factory.setJpaProperties(properties);
         return  factory;
     }
 

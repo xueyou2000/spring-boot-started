@@ -1,8 +1,10 @@
 package com.xueyou.model.pojo;
 
+import com.xueyou.model.enums.CustomerStatus;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * 创建 by xueyo on 2019/7/17
@@ -30,10 +32,23 @@ public class Customer {
     @Column(name = "LAST_NAME", length = 30, nullable = false)
     private String lastName;
 
-    public Customer(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+    /**
+     * 创建时间
+     */
+    @Column(name = "CREATE_TIME", nullable = false)
+    private Date createTime;
+
+    /**
+     * 年龄
+     */
+    @Column(name = "AGE", length = 20)
+    private int age;
+
+    /**
+     * 状态
+     */
+    @Column(name = "STATUS", length = 15)
+    private CustomerStatus status;
 
     /**
      * 默认构造函数仅为JPA而存在。您不会直接使用它，因此它被指定为protected
