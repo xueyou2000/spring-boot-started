@@ -1,7 +1,10 @@
 package com.xueyou.repository;
 
 import com.xueyou.model.pojo.Customer;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,6 +31,11 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     List<Customer> findByLastNameAndFirstName(String lastName, String firstName);
 
     Customer findFirstByFirstName(String firstName);
+
+    @Query(value = "SELECT * FROM customer WHERE last_name = ?1",
+        countQuery = "SELECT count(*) FROM customer WHERE last_name = ?1",
+        nativeQuery = true)
+    Page<Customer> findAllBySql(String lastName, Pageable pageable);
 
 
 }

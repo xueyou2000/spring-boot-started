@@ -3,8 +3,8 @@ package com.xueyou.controller;
 import com.xueyou.model.pojo.Customer;
 import com.xueyou.repository.CustomerRepository;
 import com.xueyou.service.CustomerService;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.*;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -42,6 +42,11 @@ public class CustomerController {
         ExampleMatcher matcher = ExampleMatcher.matching()
                 .withIgnorePaths("age", "createTime");
         return customerRepository.findAll(Example.of(customer, matcher));
+    }
+
+    @PostMapping("/findAllBySql")
+    public Page<Customer> findAllBySql(@RequestParam String lastName, @PageableDefault(page = 0, size = 5, sort = "age") Pageable pageable) {
+        return customerRepository.findAllBySql(lastName, pageable);
     }
 
     @GetMapping("/all")
