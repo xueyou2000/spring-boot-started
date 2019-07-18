@@ -13,12 +13,21 @@ import javax.persistence.*;
 @Data
 public class Customer {
 
+    @Column(name = "ID")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * 名字
+     */
+    @Column(name = "FIRST_NAME", length = 30, nullable = false)
     private String firstName;
 
+    /**
+     * 姓氏
+     */
+    @Column(name = "LAST_NAME", length = 30, nullable = false)
     private String lastName;
 
     public Customer(String firstName, String lastName) {
