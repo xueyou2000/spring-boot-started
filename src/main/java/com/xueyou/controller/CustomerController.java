@@ -45,7 +45,7 @@ public class CustomerController {
     }
 
     @PostMapping("/findAllBySql")
-    public Page<Customer> findAllBySql(@RequestParam String lastName, @PageableDefault(page = 0, size = 5, sort = "age") Pageable pageable) {
+    public Page<Customer> findAllBySql(@RequestParam String lastName, @PageableDefault(page = 0, size = 5, sort = "age", direction = Sort.Direction.DESC) Pageable pageable) {
         return customerRepository.findAllBySql(lastName, pageable);
     }
 

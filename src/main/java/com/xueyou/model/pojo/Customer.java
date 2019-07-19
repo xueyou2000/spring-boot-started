@@ -2,6 +2,7 @@ package com.xueyou.model.pojo;
 
 import com.xueyou.model.enums.CustomerStatus;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -36,6 +37,7 @@ public class Customer {
      * 创建时间
      */
     @Column(name = "CREATE_TIME", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date createTime;
 
     /**
