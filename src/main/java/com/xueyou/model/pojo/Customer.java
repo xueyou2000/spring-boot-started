@@ -37,7 +37,6 @@ public class Customer {
      * 创建时间
      */
     @Column(name = "CREATE_TIME", nullable = false)
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date createTime;
 
     /**

@@ -49,6 +49,11 @@
             <artifactId>lombok</artifactId>
             <version>1.16.8</version>
         </dependency>
+        <!-- 日期格式化 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
 
         <!-- 视图引擎 -->
         <dependency>

@@ -20,4 +20,9 @@ spring:
       hibernate:
         format_sql: true
         use_sql_comments: true
+  jackson:
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+    date-format: "yyy-MM-dd HH:mm:ss"
 

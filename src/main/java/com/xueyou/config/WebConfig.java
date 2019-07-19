@@ -33,7 +33,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         MyConverter myConverter = new MyConverter();
         // 将转换器放在前面才能生效，否则字符串会被其他转换器优先处理
-        converters.set(0, myConverter);
+        // converters.set(0, myConverter);
         // converters.add(myConverter);
     }
 
