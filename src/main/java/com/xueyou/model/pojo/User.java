@@ -42,16 +42,12 @@ public class User {
     @Column(name = "NICKNAME", length = 30, nullable = true)
     private String nickname;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    public Date getBirthday() {
-        return birthday;
-    }
-
     /**
      * 生日
      */
     @Column(name = "BIRTHDAY")
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date birthday;
 
     /**

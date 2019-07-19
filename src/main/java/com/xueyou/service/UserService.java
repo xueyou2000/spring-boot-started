@@ -36,7 +36,7 @@ public class UserService {
         QDepartment department = QDepartment.department;
 
         return jpaQueryFactory
-                // 投影只取部门字段
+                // 投影只取部分字段
                 .select(
                         user.username,
                         user.nickname,

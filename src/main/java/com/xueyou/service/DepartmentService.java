@@ -23,7 +23,7 @@ public class DepartmentService {
     /**
      * 构造函数
      * @param departmentRepository  部门仓储
-     * @param userRepository
+     * @param userRepository    用户仓储
      */
     public DepartmentService(DepartmentRepository departmentRepository, UserRepository userRepository) {
         this.departmentRepository = departmentRepository;
