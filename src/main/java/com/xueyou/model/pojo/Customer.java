@@ -16,6 +16,9 @@ import java.util.Date;
 @Data
 public class Customer {
 
+    /**
+     * Id
+     */
     @Column(name = "ID")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

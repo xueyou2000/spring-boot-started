@@ -1,6 +1,5 @@
 package com.xueyou.controller;
 
-import com.xueyou.model.pojo.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
@@ -60,32 +59,32 @@ public class IndexController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor());
     }
 
-    /**
-     * 测试新增用户转换 时间字符串 为 Date
-     * { "name": "XueYou", "date": "2019-5-6" }
-     * @param user 用户信息
-     */
-    @PostMapping("/add")
-    public void addUser(@RequestBody User user) {
-        log.info(user.getDate().toString());
-    }
+//    /**
+//     * 测试新增用户转换 时间字符串 为 Date
+//     * { "name": "XueYou", "date": "2019-5-6" }
+//     * @param user 用户信息
+//     */
+//    @PostMapping("/add")
+//    public void addUser(@RequestBody User user) {
+//        log.info(user.getDate().toString());
+//    }
+//
+//    @GetMapping("/test")
+//    public User test() {
+//        User user = new User();
+//        user.setName("XueYou");
+//        return user;
+//    }
 
-    @GetMapping("/test")
-    public User test() {
-        User user = new User();
-        user.setName("XueYou");
-        return user;
-    }
-
-    /**
-     * 测试控制器异常拦截
-     * @return 返回用户
-     * @throws Exception 测试异常
-     */
-    @GetMapping("/exception")
-    public User exception() throws Exception {
-        throw new Exception("测试异常");
-    }
+//    /**
+//     * 测试控制器异常拦截
+//     * @return 返回用户
+//     * @throws Exception 测试异常
+//     */
+//    @GetMapping("/exception")
+//    public User exception() throws Exception {
+//        throw new Exception("测试异常");
+//    }
 
     /**
      * 测试自定义转换器
