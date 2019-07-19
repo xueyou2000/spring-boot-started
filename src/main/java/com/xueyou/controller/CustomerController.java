@@ -1,6 +1,9 @@
 package com.xueyou.controller;
 
+import com.querydsl.core.QueryFactory;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.xueyou.model.pojo.Customer;
+import com.xueyou.model.pojo.QCustomer;
 import com.xueyou.repository.CustomerRepository;
 import com.xueyou.service.CustomerService;
 import org.springframework.data.domain.*;
@@ -16,10 +19,12 @@ public class CustomerController {
 
     private final CustomerRepository customerRepository;
     private final CustomerService customerService;
+    private final JPAQueryFactory jpaQueryFactory;
 
-    public CustomerController(CustomerRepository customerRepository,CustomerService customerService) {
+    public CustomerController(CustomerRepository customerRepository,CustomerService customerService, JPAQueryFactory jpaQueryFactory) {
         this.customerRepository = customerRepository;
         this.customerService = customerService;
+        this.jpaQueryFactory = jpaQueryFactory;
     }
 
     @PostMapping("/add")
@@ -42,6 +47,14 @@ public class CustomerController {
         ExampleMatcher matcher = ExampleMatcher.matching()
                 .withIgnorePaths("age", "createTime");
         return customerRepository.findAll(Example.of(customer, matcher));
+    }
+
+    @GetMapping("/test")
+    public Customer test() {
+        QCustomer customer = QCustomer.customer;
+        return jpaQueryFactory.selectFrom(customer)
+                .where(customer.firstName.eq("无量"))
+                .fetchOne();
     }
 
     @PostMapping("/findAllBySql")
