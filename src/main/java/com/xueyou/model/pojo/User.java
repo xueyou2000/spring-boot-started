@@ -57,12 +57,9 @@ public class User {
     private BigDecimal uIndex;
 
     /**
-     * 部门实体: 一对多映射
+     * 部门id
      */
-    // cascade 设置级联类型为合并类型
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    // 设置此列字段为关联列
-    @JoinColumn(name = "DEPARTMENT_ID")
-    private Department department;
+    @Column(name = "DEPARTMENT_ID")
+    private Integer departmentId;
 
 }

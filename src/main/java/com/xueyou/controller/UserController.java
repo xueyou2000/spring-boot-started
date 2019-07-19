@@ -1,6 +1,7 @@
 package com.xueyou.controller;
 
 import com.xueyou.model.vo.UserDeptVo;
+import com.xueyou.model.vo.UserInDeptVo;
 import com.xueyou.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +26,13 @@ public class UserController {
     }
 
     @GetMapping("/findByDepartmentId")
-    public List<UserDeptVo> findByDepartmentId(@RequestParam long departmentId) {
+    public List<UserDeptVo> findByDepartmentId(@RequestParam Integer departmentId) {
         return userService.findByDepartmentId(departmentId);
+    }
+
+    @GetMapping("/findInDeptByDepartmentId")
+    public List<UserInDeptVo> findInDeptByDepartmentId(@RequestParam Integer departmentId) {
+        return userService.findInDeptByDepartmentId(departmentId);
     }
 
 }

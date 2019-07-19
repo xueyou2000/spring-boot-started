@@ -60,7 +60,7 @@ public class DepartmentService {
     @Transactional
     public Department createByNameWithUsers(String deptName, List<User> userList) {
         Department department = createByName(deptName);
-        userList.forEach(user -> user.setDepartment(department));
+        userList.forEach(user -> user.setDepartmentId(department.getId()));
         userRepository.saveAll(userList);
         return department;
     }
