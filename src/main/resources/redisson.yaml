@@ -16,4 +16,4 @@ singleServerConfig:
   retryInterval: 1500
   password: null
 codec:
-  class: org.redisson.codec.StringCodec
+  class: org.redisson.codec.JsonJacksonCodec

@@ -26,4 +26,10 @@ spring:
     port: 6379
     redisson:
       config: classpath:redisson.yaml
+  rabbitmq:
+    host: 172.27.58.70
+    port: 5672
+    username: root
+    password: 123456
+    virtual-host: my_vhost
 

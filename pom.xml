@@ -94,6 +94,12 @@
             <version>3.11.0</version>
         </dependency>
 
+        <!-- 消息队列 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
         <!-- =====开发依赖===== -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

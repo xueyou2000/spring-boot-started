@@ -1,5 +1,6 @@
 package com.xueyou;
 
+import com.rabbitmq.client.ConnectionFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +9,7 @@ import org.redisson.api.RList;
 import org.redisson.api.RedissonClient;
 import org.redisson.client.codec.StringCodec;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -25,6 +27,9 @@ public class ApplicationTest {
 
     @Autowired
     private RedissonClient redissonClient;
+
+    @Autowired
+    private RabbitProperties rabbitProperties;
 
     @Test
     public void uriComponents() {
@@ -48,6 +53,11 @@ public class ApplicationTest {
         list.add("C++");
         list.add("C#");
         list.add("Java");
+    }
+
+    @Test
+    public void mqTest() {
+        log.info("======={}", rabbitProperties.getHost());
     }
 
 }
