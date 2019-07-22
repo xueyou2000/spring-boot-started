@@ -2,7 +2,7 @@ threads: 16
 nettyThreads: 32
 singleServerConfig:
   database: 10
-  address: redis://172.27.58.70:6379
+  address: redis://172.29.81.1:6379
   subscriptionConnectionMinimumIdleSize: 1
   subscriptionConnectionPoolSize: 50
   connectionMinimumIdleSize: 32
@@ -14,6 +14,6 @@ singleServerConfig:
   timeout: 3000
   retryAttempts: 3
   retryInterval: 1500
-  password: null
+  password: 123456
 codec:
   class: org.redisson.codec.JsonJacksonCodec
