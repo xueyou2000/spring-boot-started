@@ -6,7 +6,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://172.29.81.1:3306/mydb?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://172.22.209.206:3306/mydb?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
@@ -22,13 +22,13 @@ spring:
         use_sql_comments: true
   redis:
     database: 10
-    host: 172.29.81.1
+    host: 172.22.209.206
     port: 6379
     password: 123456
     redisson:
       config: classpath:redisson.yaml
   rabbitmq:
-    host: 172.29.81.1
+    host: 172.22.209.206
     port: 5672
     username: root
     password: 123456

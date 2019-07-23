@@ -2,7 +2,7 @@ threads: 16
 nettyThreads: 32
 singleServerConfig:
   database: 10
-  address: redis://172.29.81.1:6379
+  address: redis://172.22.209.206:6379
   subscriptionConnectionMinimumIdleSize: 1
   subscriptionConnectionPoolSize: 50
   connectionMinimumIdleSize: 32
